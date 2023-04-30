@@ -18,7 +18,9 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # id=models.AutoField(primary_key=True)
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default='id')
     # user = User.objects.create_user(username='johndoe', email='johndoe@example.com', password='mypassword')
     bio = models.TextField()
     avatar = models.ImageField(upload_to='avatars/')
@@ -26,12 +28,11 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
     
-# Create your models here.
+# Create your models here.       
 class Category(models.Model):
     name = models.CharField(max_length=255)
    
     
-
     def __str__(self):
         return self.name
 class Brand(models.Model):
